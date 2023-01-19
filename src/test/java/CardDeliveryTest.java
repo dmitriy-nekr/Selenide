@@ -2,6 +2,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
 
@@ -15,9 +16,10 @@ public class CardDeliveryTest {
     public void shouldCorrectWorkTest() {
         open("http://localhost:9999/");
         $("[data-test-id=city] input").setValue("Новосибирск");
+        String a = $ ("[data-test-id=date] input").getValue();
         $("[data-test-id=date] input").sendKeys(Keys.CONTROL + "A");
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        $("[data-test-id=date] input").setValue("23.02.2023");
+        $("[data-test-id=date] input").setValue(a);
         $x("//*[@data-test-id='name']//input").setValue("Петров Василий");
         $x("//*[@data-test-id='phone']//input").setValue("+79184582645");
         $("[data-test-id=agreement]").click();
